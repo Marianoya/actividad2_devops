@@ -35,7 +35,6 @@ def crear_cliente():
 def consultar_cliente():
 
     nombre = input("Ingresa Nombre del cliente para visulizar los servicios solicitados: ")
-    value = clientes[nombre]
 
     if nombre not in clientes:
             print("Cliente no encontrado en la base de datos.")
@@ -44,9 +43,6 @@ def consultar_cliente():
     with open(clientes[nombre], "r") as f:
             print("\n--- Información del cliente ---")
             print(f.read())
-
-    if nombre in clientes:
-                print(f"Clave del diccionario = {nombre} | Value del diccionario = {value}")
 
 def consultar_lista():
     
