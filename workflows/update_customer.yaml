@@ -9,8 +9,8 @@ name: Actualizar CLiente
 
 jobs:
   notificar:
-    runs-on:ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-      -name:Notificacion
-      run echo"Cliente recurrente actualizado Notificacion de el equipo de AXA"
+      -name: Notificacion
+      run: echo "Cliente recurrente actualizado Notificacion de el equipo de AXA"
     
