@@ -4,7 +4,7 @@ name: Actualizar CLiente
   push:
     branches: ["main"]
     paths:
-      - "main.py"
+      - "clientes/**"
   workflow_dispatch:
 
 jobs:
