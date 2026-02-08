@@ -1,12 +1,17 @@
-name: Consultar CLiente
- 
+name: Consultar Cliente
+
 on:
   push:
+    branches: ["main"]
+    paths:
+      - "main.py"
+  workflow_dispatch:
+
 jobs:
   notificar:
-    runs-on:ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-      -name:Notificacion
-      run echo"Consulta  de cliente realizada. Notificacion del Equipo de AXA."
+      - name: Notificacion
+        run: echo "Consulta de cliente realizada. Notificacion del Equipo de AXA."
 
       
