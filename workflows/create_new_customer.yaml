@@ -1,7 +1,12 @@
 name: Nuevo CLiente
- 
-on:
+
+ on:
   push:
+    branches: ["main"]
+    paths:
+      - "main.py"
+  workflow_dispatch:
+
 jobs:
   notificar:
     runs-on:ubuntu-latest
