@@ -1,23 +1,31 @@
 #Version1.1.
 import os
+import token
 import requests
 
 def notificar_consulta():
     url = "https://api.github.com/repos/Marianoya/actividad2_devops/dispatches"
     headers = {
         "Accept": "application/vnd.github+json",
-        "Authorization": "Bearer TU_TOKEN"
+        "Authorization": f"Bearer {token}"
+
     }
     data = {"event_type": "consulta_cliente"}
     requests.post(url, json=data, headers=headers)
-    
+
+# Cargar clientes existentes al iniciar
+
 # Diccionario (tabla hash)
 # clave: nombre del cliente
 # valor: ruta del archivo
 clientes = {}
 
 CARPETA_CLIENTES = "clientes"
-
+for archivo in os.listdir(CARPETA_CLIENTES):
+    if archivo.endswith(".txt"):
+        nombre = archivo.replace(".txt", "")
+        clientes[nombre] = f"{CARPETA_CLIENTES}/{archivo}"
+    
 # Crear carpeta si no existe
 if not os.path.exists(CARPETA_CLIENTES):
     os.makedirs(CARPETA_CLIENTES)
