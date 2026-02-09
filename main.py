@@ -3,6 +3,7 @@ import os
 import token
 import requests
 
+print("TOKEN:", token)
 
 def notificar_consulta():
 
