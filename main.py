@@ -3,7 +3,7 @@ import os
 import token
 import requests
 
-print("TOKEN:", token)
+print("TOKEN:", os.getenv("GITHUB_TOKEN"))
 
 def notificar_consulta():
 
