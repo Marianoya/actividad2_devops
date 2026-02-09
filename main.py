@@ -85,7 +85,7 @@ def consultar_lista():
             print("No hay registro de datos por el momento.")
             print("Primero registre en la opcion 1 al menos un cliente con su servicio")
             
-    notificar_consulta("lista_completa")
+    notificar_consulta("lista completa de clientes")
     
 def actualizar_cliente():
     nombre = input("Ingresa Nombre del cliente para agregar servicio(s): ")

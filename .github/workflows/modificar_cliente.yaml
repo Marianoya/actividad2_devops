@@ -22,9 +22,6 @@ jobs:
             DIFF=$(git diff --name-status HEAD)
           fi
 
-          echo "Cambios detectados:"
-          echo "$DIFF"
-
           if echo "$DIFF" | grep "^M"; then
               echo "Archivos modificados:"
               echo "$DIFF" | grep "^M"
