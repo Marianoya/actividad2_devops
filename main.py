@@ -25,10 +25,10 @@ if not os.path.exists(CARPETA_CLIENTES):
 
 def crear_cliente():
     nombre = input("Ingresa el Nombre del cliente: ")
+    ruta = f"clientes/{nombre}.txt"
 
-    if nombre in clientes:
-        print("El cliente ya existe. No se creara nuevamente el regisotr ya que ya cuenta"
-        " con un registro previo.")
+    if os.path.exists(ruta):
+        print("El cliente ya existe. No se puede crear nuevamente.")
         return
 
     servicio = input("Ingresa Servicio solicitado por el cliente: ")
@@ -74,9 +74,10 @@ def consultar_lista():
     
 def actualizar_cliente():
     nombre = input("Ingresa Nombre del cliente para agregar servicio(s): ")
+    ruta = f"clientes/{nombre}.txt"
 
-    if nombre not in clientes:
-        print("Cliente no encontrado en nuestra base de datos.")
+    if not os.path.exists(ruta):
+        print("El cliente no existe. No se puede modificar.")
         return
 
     nuevo_servicio = input("Nuevo servicio solicitado por el cliente: ")
