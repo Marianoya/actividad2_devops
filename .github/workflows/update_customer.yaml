@@ -2,25 +2,17 @@ name: Modificar Cliente
 
 on:
   push:
-    branches: ["main"]
     paths:
       - "clientes/**"
 
 jobs:
-  detectar_modificacion:
+  modificar:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Detectar modificación de archivo
+      - name: Verificar modificación de archivo
         run: |
           if git diff --name-status HEAD~1 HEAD | grep "^M"; then
-            echo "Cliente modificado"
+            echo "Cliente modificado. Notificación del equipo de AXA."
           else
-            echo "No hubo modificación"
-            exit 1
+            echo "No hubo modificación de cliente. Workflow finalizado sin error."
           fi
-
-      - name: Notificacion
-        run: echo "Cliente actualizado. Notificación del equipo de AXA."

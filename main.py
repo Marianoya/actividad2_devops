@@ -4,6 +4,8 @@ import token
 import requests
 
 def notificar_consulta():
+
+    token = os.getenv("GITHUB_TOKEN")
     url = "https://api.github.com/repos/Marianoya/actividad2_devops/dispatches"
     headers = {
         "Accept": "application/vnd.github+json",
@@ -21,15 +23,15 @@ def notificar_consulta():
 clientes = {}
 
 CARPETA_CLIENTES = "clientes"
+
+if not os.path.exists(CARPETA_CLIENTES):
+    os.makedirs(CARPETA_CLIENTES)
+
 for archivo in os.listdir(CARPETA_CLIENTES):
     if archivo.endswith(".txt"):
         nombre = archivo.replace(".txt", "")
         clientes[nombre] = f"{CARPETA_CLIENTES}/{archivo}"
     
-# Crear carpeta si no existe
-if not os.path.exists(CARPETA_CLIENTES):
-    os.makedirs(CARPETA_CLIENTES)
-
 
 def crear_cliente():
     nombre = input("Ingresa el Nombre del cliente: ")

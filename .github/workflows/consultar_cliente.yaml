@@ -1,15 +1,12 @@
-name: Consulta Cliente
+name: Consultar Cliente
 
 on:
   repository_dispatch:
     types: [consulta_cliente]
 
 jobs:
-  notificar:
+  consultar:
     runs-on: ubuntu-latest
     steps:
-      - name: Notificacion
-        run: echo "Consulta de cliente realizada. Notificacion del Equipo de AXA."
-
-        
-      
+      - name: Notificación de consulta
+        run: echo "Consulta de cliente realizada. Notificación del equipo de AXA."
