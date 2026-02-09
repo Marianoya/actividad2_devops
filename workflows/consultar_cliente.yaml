@@ -1,11 +1,8 @@
-name: Consultar Cliente
+name: Consulta Cliente
 
 on:
-  push:
-    branches: ["main"]
-    paths:
-      - "clientes/**"
-  workflow_dispatch:
+  repository_dispatch:
+    types: [consulta_cliente]
 
 jobs:
   notificar:
@@ -14,4 +11,5 @@ jobs:
       - name: Notificacion
         run: echo "Consulta de cliente realizada. Notificacion del Equipo de AXA."
 
+        
       

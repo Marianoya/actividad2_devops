@@ -1,6 +1,16 @@
 #Version1.1.
 import os
+import requests
 
+def notificar_consulta():
+    url = "https://api.github.com/repos/Marianoya/actividad2_devops/dispatches"
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "Authorization": "Bearer TU_TOKEN"
+    }
+    data = {"event_type": "consulta_cliente"}
+    requests.post(url, json=data, headers=headers)
+    
 # Diccionario (tabla hash)
 # clave: nombre del cliente
 # valor: ruta del archivo
@@ -43,6 +53,8 @@ def consultar_cliente():
     with open(clientes[nombre], "r") as f:
             print("\n--- Información del cliente ---")
             print(f.read())
+    
+    notificar_consulta()
 
 def consultar_lista():
     
@@ -58,7 +70,8 @@ def consultar_lista():
             print("No hay registro de datos por el momento.")
             print("Primero registre en la opcion 1 al menos un cliente con su servicio")
             
-
+    notificar_consulta()
+    
 def actualizar_cliente():
     nombre = input("Ingresa Nombre del cliente para agregar servicio(s): ")
 

@@ -1,17 +1,26 @@
-name: Nuevo CLiente
+name: Crear Cliente
 
- on:
+on:
   push:
     branches: ["main"]
     paths:
       - "clientes/**"
-  workflow_dispatch:
 
 jobs:
-  notificar:
+  detectar_creacion:
     runs-on: ubuntu-latest
     steps:
-      -name: Notificacion
-      run: echo"Se ha creado un nuevo cliente. Notificacion de el equipo de AXA"
-    
-    
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Detectar creación de archivo
+        run: |
+          if git diff --name-status HEAD~1 HEAD | grep "^A"; then
+            echo "Cliente creado"
+          else
+            echo "No hubo creación"
+            exit 1
+          fi
+
+      - name: Notificacion
+        run: echo "Se ha creado un nuevo cliente. Notificación del equipo de AXA."

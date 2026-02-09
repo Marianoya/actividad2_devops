@@ -4,6 +4,9 @@ FROM python:3.12-slim
 # Directorio de trabajo dentro del contenedor
 WORKDIR /app
 
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
 # Copiamos el código al contenedor
 COPY main.py .
 COPY clientes ./clientes
