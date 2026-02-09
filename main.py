@@ -5,16 +5,19 @@ import requests
 
 print("TOKEN:", os.getenv("GITHUB_TOKEN"))
 
-def notificar_consulta():
-
+def notificar_consulta(nombre_cliente):
     token = os.getenv("GITHUB_TOKEN")
     url = "https://api.github.com/repos/Marianoya/actividad2_devops/dispatches"
     headers = {
         "Accept": "application/vnd.github+json",
         "Authorization": f"Bearer {token}"
-
     }
-    data = {"event_type": "consulta_cliente"}
+    data = {
+        "event_type": "consulta_cliente",
+        "client_payload": {
+            "cliente": nombre_cliente
+        }
+    }
     requests.post(url, json=data, headers=headers)
 
 # Cargar clientes existentes al iniciar
@@ -66,7 +69,7 @@ def consultar_cliente():
             print("\n--- Información del cliente ---")
             print(f.read())
     
-    notificar_consulta()
+    notificar_consulta(nombre)
 
 def consultar_lista():
     
@@ -82,7 +85,7 @@ def consultar_lista():
             print("No hay registro de datos por el momento.")
             print("Primero registre en la opcion 1 al menos un cliente con su servicio")
             
-    notificar_consulta()
+    notificar_consulta("lista_completa")
     
 def actualizar_cliente():
     nombre = input("Ingresa Nombre del cliente para agregar servicio(s): ")

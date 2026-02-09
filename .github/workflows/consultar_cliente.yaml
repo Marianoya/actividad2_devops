@@ -8,5 +8,7 @@ jobs:
   consultar:
     runs-on: ubuntu-latest
     steps:
-      - name: Notificación de consulta
-        run: echo "Consulta de cliente realizada. Notificación del equipo de AXA."
+      - name: Mostrar cliente consultado
+        run: |
+          echo "Consulta realizada."
+          echo "Cliente consultado: ${{ github.event.client_payload.cliente }}"

@@ -26,9 +26,9 @@ jobs:
           echo "$DIFF"
 
           if echo "$DIFF" | grep "^A"; then
-            echo "Cliente creado. Notificación del equipo de AXA."
+              echo "Archivos creados:"
+              echo "$DIFF" | grep "^A"
+              echo "Cliente creado. Notificación del equipo de AXA."
           else
-            echo "No hubo creación de cliente. Finalizando sin error."
+              echo "No hubo creación de cliente. Finalizando sin error."
           fi
-
-          
