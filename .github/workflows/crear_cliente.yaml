@@ -11,14 +11,14 @@ jobs:
     steps:
       - name: Obtener código
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2   # ← ESTA LÍNEA ES LA CLAVE
 
       - name: Detectar creación de archivos
-        run: |
-          # Si existe HEAD~1, comparamos contra él
+        run:  
           if git rev-parse HEAD~1 >/dev/null 2>&1; then
             DIFF=$(git diff --name-status HEAD~1 HEAD)
           else
-            # Si no existe HEAD~1 (primer commit), usamos solo HEAD
             DIFF=$(git diff --name-status HEAD)
           fi
 
@@ -30,3 +30,5 @@ jobs:
           else
             echo "No hubo creación de cliente. Finalizando sin error."
           fi
+
+      

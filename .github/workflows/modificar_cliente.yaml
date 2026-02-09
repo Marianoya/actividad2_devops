@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Obtener código
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2   # ← NECESARIO PARA HEAD~1
 
       - name: Detectar modificación de archivos
         run: |
@@ -28,3 +30,5 @@ jobs:
           else
             echo "No hubo modificación de cliente. Finalizando sin error."
           fi
+
+          
